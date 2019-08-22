@@ -205,7 +205,7 @@ export const CheckBoxInnerSpan = CSSComponent({
     transition: all 0.3s;
   `,
   normal: {
-    selectNames: [['background'], ['borderRadius'], ['border']],
+    selectNames: [['background'], ['borderRadius'], ['boxShadow'], ['border']],
     defaultTheme: {
       background: { color: defaultColor },
       border: getBorder({ color: borderColor, width: 1, style: 'solid' }),
@@ -265,7 +265,7 @@ export const CheckBoxInnerSpan = CSSComponent({
     },
   },
   hover: {
-    selectNames: [['background'], ['borderRadius'], ['border']],
+    selectNames: [['background'], ['borderRadius'], ['boxShadow'], ['border']],
     defaultTheme: {
       border: getBorder({ color: themeColor, width: 1, style: 'solid' }),
       borderRadius: getBorderRadius(2),
@@ -273,7 +273,7 @@ export const CheckBoxInnerSpan = CSSComponent({
     },
   },
   disabled: {
-    selectNames: [['background'], ['borderRadius'], ['border']],
+    selectNames: [['background'], ['borderRadius'], ['boxShadow'], ['border']],
     defaultTheme: {
       border: getBorder({ color: borderDisableColor, width: 1, style: 'solid' }),
       borderRadius: getBorderRadius(2),
