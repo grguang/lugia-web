@@ -254,16 +254,16 @@
           "disabled": [["color"], ["font"]]
         },
         "RadioEdgeUnChecked": {
-          "name": "未选中边框样式",
-          "desc": "未选中边框样式",
-          "normal": [["background"], ["border"], ["borderRadius"], ["width"], ["height"]],
+          "name": "未选中外框样式",
+          "desc": "未选中外框样式",
+          "normal": [["background"], ["border"], ["borderRadius"], ["boxShadow"], ["width"], ["height"]],
           "hover": [["background"], ["borderRadius"], ["border"]],
           "disabled": [["background"], ["borderRadius"], ["border"]]
         },
         "RadioEdgeChecked": {
           "name": "选中外框样式",
           "desc": "选中外框样式",
-          "normal": [["background"], ["border"], ["borderRadius"], ["width"], ["height"]],
+          "normal": [["background"], ["border"], ["borderRadius"], ["boxShadow"], ["width"], ["height"]],
           "hover": [["background"], ["borderRadius"], ["border"]],
           "disabled": [["background"], ["borderRadius"], ["border"]]
         },
@@ -277,7 +277,7 @@
         "RadioEdgeCancel": {
           "name": "取消状态外框样式",
           "desc": "取消状态外框样式",
-          "normal": [["background"], ["border"], ["borderRadius"], ["width"], ["height"]],
+          "normal": [["background"], ["border"], ["borderRadius"], ["boxShadow"], ["width"], ["height"]],
           "hover": [["background"], ["borderRadius"], ["border"]],
           "disabled": [["background"], ["borderRadius"], ["border"]]
         },
