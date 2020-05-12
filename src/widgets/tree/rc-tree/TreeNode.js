@@ -188,6 +188,7 @@ class TreeNode extends React.Component {
             viewClass={viewClass}
             theme={theme}
             disabled={disabled}
+            {...this.props.dispatchEvent([['hover']], 'f2c')}
             singleTheme
             iconClass={iconClass}
           />
@@ -509,6 +510,17 @@ class TreeNode extends React.Component {
   getSwitchIconTheme = (expandedState: string) => {
     const { size } = this.props;
     let switchIconThemeHocProps;
+    const defaultMarginLeft = {
+      normal: {
+        padding: {
+          left: get('padding'),
+        },
+      },
+    };
+    const { viewClass: notOpenViewClass, theme: notOpenTheme } = this.props.getPartOfThemeHocProps(
+      'SwitchIcon'
+    );
+
     if (expandedState === 'open') {
       const { viewClass, theme } = this.props.getPartOfThemeHocProps('SwitchIconExpanded');
       switchIconThemeHocProps = {
@@ -516,16 +528,21 @@ class TreeNode extends React.Component {
         theme: {
           [viewClass]: deepMerge(
             getTreeThemeDefaultConfig(size, 'SwitchIconExpanded'),
+            defaultMarginLeft,
+            notOpenTheme[notOpenViewClass],
             theme[viewClass]
           ),
         },
       };
     } else {
-      const { viewClass, theme } = this.props.getPartOfThemeHocProps('SwitchIcon');
       switchIconThemeHocProps = {
-        viewClass,
+        viewClass: notOpenViewClass,
         theme: {
-          [viewClass]: deepMerge(getTreeThemeDefaultConfig(size, 'SwitchIcon'), theme[viewClass]),
+          [notOpenViewClass]: deepMerge(
+            getTreeThemeDefaultConfig(size, 'SwitchIcon'),
+            defaultMarginLeft,
+            notOpenTheme[notOpenViewClass]
+          ),
         },
       };
     }
@@ -534,7 +551,7 @@ class TreeNode extends React.Component {
 
   getIconTheme = (iconType: string) => {
     const { viewClass, theme } = this.props.getPartOfThemeHocProps(iconType);
-    const marginLeft = iconType === 'SuffixIcon' ? get('padding') : 0;
+    const marginLeft = iconType === 'SuffixIcon' ? get('paddingToText') : 0;
     const marginRight = iconType === 'PrefixIcon' ? get('paddingToText') : 0;
     const defaultTheme = {
       normal: {
@@ -752,9 +769,8 @@ class TreeNode extends React.Component {
         title={title}
         color={color}
         height={itemHeight}
-        {...addMouseEvent(this)}
       >
-        <FlexWrap disabled={disabled} themeProps={TreeItemWrapThemeProps}>
+        <FlexWrap disabled={disabled} themeProps={TreeItemWrapThemeProps} {...addMouseEvent(this)}>
           <FlexBox disabled={disabled} themeProps={TreeItemWrapThemeProps}>
             {!showSwitch || switchAtEnd
               ? null
